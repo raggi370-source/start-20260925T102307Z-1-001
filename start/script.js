@@ -7,6 +7,7 @@
 
 let usciti = []; // array dei numeri già estratti
 let disponibili = []
+let cronologia =[]
 
 /* SCRIVI QUI LE TUE FUNZIONI E I TUOI LISTENER:
    1. rendiTabellone()  — crea 90 div, evidenzia i numeri usciti
@@ -35,10 +36,23 @@ const bottone_estrai = document.getElementById(`estrai`);
 //if (j === i )
 bottone_estrai.addEventListener(`click`, () => {
   let a = Math.floor(Math.random() * disponibili.length)
-  let b = disponibili.splice(a, 1)[0];
+  let b = disponibili.splice(a -1, 1)[0];
   usciti.push(b);
+  cronologia.push(b)
+  if (cronologia.length > 11){//cronologia
+    let c = cronologia.pop();
+    console.log(c)
+    
+  }
+  const crono = document.querySelector(`#ultimo-numero`);
+  crono.textContent = cronologia + " , ";
+  
+  
+  
+  
   console.log(a);
-  console.log(b)
+  console.log(b);
+  console.log(cronologia)
   console.log(disponibili)
   console.log(usciti)
 })
